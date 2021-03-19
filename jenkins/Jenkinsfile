@@ -1,9 +1,9 @@
 pipeline {
-    agent none
+    agent { docker { image 'python:3.5.1' } }
     stages {
         stage('build') {
-            agent { docker { image 'python:3.5.1' } }
             steps {
+                sh 'python --version'
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
             }
         }
